@@ -13,14 +13,22 @@ public class Emprestimo {
 		return livro;
 	}
 	public void setLivro(Livro livro) {
+		if (livro != null) {
 		this.livro = livro;
-	}
+		} else {
+		throw new RuntimeException("Dados invalidos.");
+		}
+		}
 	public Usuario getUsuario() {
 		return usuario;
 	}
 	public void setUsuario(Usuario usuario) {
+		if (usuario != null) {
 		this.usuario = usuario;
-	}
+		} else {
+		throw new RuntimeException("Dados invalidos.");
+		}
+		}
 	public String getDataEmprestimo() {
 		return dataEmprestimo;
 	}

@@ -31,6 +31,7 @@ public class UC01RegistraEmprestimoDeLivro {
 		usuario.setRa("11111");
 		usuario.setNome("Jose da Silva");
 		servico = new ServicoEmprestimo();
+		emprestimo = new Emprestimo();
 	}
 	@AfterClass
 	public static void tearDownAfterClass() throws Exception {
@@ -62,8 +63,31 @@ public class UC01RegistraEmprestimoDeLivro {
 		//verificacao
 	    assertTrue(dataEsperada.equals(dataObtida));
 	}
+	//@Test
+	//public void CT05Verificar_o_metodo_getRA() {
+		//("11111", usuario.getRa());
+	//}
+	
+	
+
 	@Test
-	public void CT05Verificar_o_metodo_getRA() {
-		assertEquals("11111", usuario.getRa());
+	public void CT05UC01Cadastrar_livro_com_sucesso(){
+		Livro resultadoEsperado = new Livro();
+		resultadoEsperado.setIsbn("121212");
+		resultadoEsperado.setTitulo("Engenharia de Software");
+		resultadoEsperado.setAutor("Pressman");
+		Emprestimo resultadoObtido = servico.empresta(livro, usuario);
+		assertTrue(resultadoEsperado.equals(resultadoObtido.getLivro()));
+		
+
+		
 	}
+	
+	@Test(expected=RuntimeException.class)
+	public void CT06UC01CadastrarEmprestimo_com_livro_invalido(){
+		emprestimo.setLivro(null);
+	}
+	
+
 }
+	
